@@ -1,0 +1,13 @@
+#!/bin/sh
+echo skipping test 1: modern computers are too fast
+# cat scene | ./c-ray-mt -t 1 > foo.ppm
+# cat scene | ./c-ray-mt -t 120 > foo.ppm
+echo Test 2: 'sphfract' at 800x600:
+cat sphfract | ./c-ray-mt -s 800x600 -t 1 > test2x1.ppm
+cat sphfract | ./c-ray-mt -s 800x600 -t 120 > test2x120.ppm
+echo Test 3: 'sphfract' at 1024x768 with 8X oversampling:
+cat sphfract | ./c-ray-mt -t 1 -s 1024x768 -r 8 > test3x1.ppm
+cat sphfract | ./c-ray-mt -t 120 -s 1024x768 -r 8 > test3x120.ppm
+echo Test 4: 'scene' at 7500x3500:
+cat scene | ./c-ray-mt -t 1 -s 7500x3500 > test4x1.ppm
+cat scene | ./c-ray-mt -t 120 -s 7500x3500 > test4x120.ppm
